@@ -2,12 +2,13 @@ import { useParams } from "react-router";
 import { LeftPane1 } from "./LeftPane";
 import React, { useContext } from "react";
 import { DataContext } from "./Context1";
-
+import { useNavigate } from "react-router";
 export const Comment1 = () => {
   const { postid } = useParams();
   const { higherVotes, incrementUpVote, incrementDownVote, intialData } =
     useContext(DataContext);
   const postData = intialData.posts.find((val) => val.postId == postid);
+  const nav=useNavigate()
   console.log(postData.comments);
   console.log(typeof postid);
   return (
@@ -18,8 +19,9 @@ export const Comment1 = () => {
       <section className="mainSection">
         <LeftPane1></LeftPane1>
         <section className="commentSec">
-            <h3>Posts</h3>
+            
           <div className="postsData ">
+          <h3 style={{width:"500px",textAlign:"left"}} onClick={()=>nav("/")}><span style={{marginRight:"10px"}}><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="square" stroke-linejoin="round"><path d="M19 12H6M12 5l-7 7 7 7"/></svg></span>Posts</h3>
             <ul className="postsData__main">
               <li className="postsData__votes">
                 <svg
