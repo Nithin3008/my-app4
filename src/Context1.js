@@ -28,7 +28,13 @@ export function DataProvider({ children }) {
         const z={...intialData,posts:x}
         setData(z)
     }
+    function sortByVotes()
+    {
+        const x=intialData.posts.sort((a,b)=>b.upvotes-a.upvotes)
+        const z={...intialData,posts:x}
+        setData(z)
+    }
     return(<>
-        <DataContext.Provider value={{higherVotes,incrementUpVote,incrementDownVote,intialData,sortByTime}}>{children}</DataContext.Provider>
+        <DataContext.Provider value={{higherVotes,incrementUpVote,incrementDownVote,intialData,sortByTime,sortByVotes}}>{children}</DataContext.Provider>
     </>)
 }

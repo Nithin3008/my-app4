@@ -2,12 +2,16 @@ import React, { useContext } from 'react'
 import { DataContext } from './Context1'
 
 export const RightPane1 = () => {
-    const {sortByTime}=useContext(DataContext)
+    const {sortByTime,sortByVotes}=useContext(DataContext)
     const filterFunc=(event)=>{
         console.log(event.target.value)
         if(event.target.value==="Latest Posts")
         {
             sortByTime()
+        }
+        else if(event.target.value==="Most Upvoted")
+        {
+            sortByVotes()
         }
     }
   return (
@@ -17,7 +21,7 @@ export const RightPane1 = () => {
            <select onClick={(e)=>filterFunc(e)}>
             <option></option>
             <option >Latest Posts</option>
-            <option>Most Voted</option>
+            <option>Most Upvoted</option>
             </select> 
         </div>
     </div>
